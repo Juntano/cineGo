@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "473183494650",
+    "firebase_url": "https://cinego-a96fb.firebaseio.com",
+    "project_id": "cinego-a96fb",
+    "storage_bucket": "cinego-a96fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473183494650:android:c82e8a87daa79ba5",
+        "android_client_info": {
+          "package_name": "fr.roudoudou.cinego"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473183494650-hc16kvtpb16rrbq15ku5tva5h76bjj7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaER_3bngHJGT5N1WzbBS7OrIvyG8iDcA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

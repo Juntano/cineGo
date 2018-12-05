@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.cineGo",
+    "id": "fr.roudoudou.cinego",
     "tns-android": {
       "version": "5.0.0"
     },
