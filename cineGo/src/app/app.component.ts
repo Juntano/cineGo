@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { NavigationEnd, Router } from "@angular/router";
+import { Component, NgZone, OnInit, ViewChild } from "@angular/core";
+import { NavigationEnd, Router, RouteReuseStrategy } from "@angular/router";
+import { routerNgProbeToken } from "@angular/router/src/router_module";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { filter } from "rxjs/operators";
 import * as app from "tns-core-modules/application";
+import { LoginService } from "./services/login/login.service";
 const firebase = require("nativescript-plugin-firebase");
 
 @Component({
@@ -11,12 +13,37 @@ const firebase = require("nativescript-plugin-firebase");
     selector: "ns-app",
     templateUrl: "app.component.html"
 })
+
 export class AppComponent implements OnInit {
+
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
 
-    constructor(private router: Router, private routerExtensions: RouterExtensions) {
-        // Use the component constructor to inject services.
+    constructor(private router: Router, private routerExtensions: RouterExtensions, private ngZone: NgZone) {
+
+        firebase.init({
+            onAuthStateChanged(data) {
+                console.log(data);
+                let view: string = "/login";
+                if (data.loggedIn) {
+                    view = "/home";
+                }
+                ngZone.run(() => {
+                    routerExtensions.navigate([view], {
+                        transition: {
+                            name: "fade"
+                        }
+                    });
+                });
+            }
+        }).then(
+            (instance) => {
+                console.log("firebase.init done");
+            },
+            (error) => {
+                console.log(`firebase.init error: ${error}`);
+            }
+        );
     }
 
     ngOnInit(): void {
@@ -27,17 +54,6 @@ export class AppComponent implements OnInit {
             .pipe(filter((event: any) => event instanceof NavigationEnd))
             .subscribe((event: NavigationEnd) => this._activatedUrl = event.urlAfterRedirects);
 
-        firebase.init({
-            // Optionally pass in properties for database, authentication and cloud messaging,
-            // see their respective docs.
-        }).then(
-            (instance) => {
-                console.log("firebase.init done");
-            },
-            (error) => {
-                console.log(`firebase.init error: ${error}`);
-            }
-        );
     }
 
     get sideDrawerTransition(): DrawerTransitionBase {
