@@ -1,13 +1,11 @@
 <FlexboxLayout>
     <StackLayout class="form">
-    <Image src="http://fleurdeau.f.l.pic.centerblog.net/e61cbdbd.png"></Image>
-      <TextField hint="Email Address" keyboardType="email"
-        autocorrect="false" autocapitalizationType="none"
-        class="input input-border"></TextField>
-      <TextField hint="Password" secure="true"
-        class="input input-border"></TextField>
-  
-      <Button text="Sign in" class="btn btn-primary"></Button>
-      <Button text="Sign up for cineGo"></Button>
+        <Image src="http://fleurdeau.f.l.pic.centerblog.net/e61cbdbd.png"></Image>
+        <TextField hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none"
+            [(ngModel)]="currentUser.email" class="input input-border"></TextField>
+        <TextField hint="Password" secure="true" [(ngModel)]="currentUser.password" class="input input-border"></TextField>
+
+        <Button [text]="isLoggingIn ? 'Sign in' : 'Sign up'" class="btn btn-primary" (tap)="login()"></Button>
+        <Button [text]="isLoggingIn ? 'Sign up for cineGo' : 'Back to login'" (tap)="toggleDisplay()"></Button>
     </StackLayout>
-  </FlexboxLayout>
+</FlexboxLayout>
