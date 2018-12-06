@@ -1,0 +1,28 @@
+FlexboxLayout {
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-image: url("https://www.desktopbackground.org/download/1366x768/2014/06/14/777928_movie-backgrounds-ppt-backgrounds_1600x1200_h.jpg")
+  }
+  StackLayout {
+    width: 300;
+    padding: 10 16;
+    background-color: #2a6fd6;
+    border-radius: 25px;
+  }
+  Image {
+    margin-bottom: 20;
+    height: 120;
+  }
+  Button, TextField {
+    margin-bottom: 10;
+  }
+  .btn-primary {
+    background-color: #00BFFF;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  TextField {
+    placeholder-color: #C4AFB4;
+    color: black;
+  }
